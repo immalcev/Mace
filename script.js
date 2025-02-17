@@ -1,5 +1,15 @@
 // Целевая дата: 6 утра 10 февраля 2025 года по MSK
-const targetDate = new Date('2025-02-10T06:00:00+03:00');
+const targetDate = new Date('2025-04-01T06:00:00+03:00');
+
+// Массив с аудиофайлами
+const audioFiles = [
+    'audio/audio1.mp3',
+    'audio/audio2.mp3',
+    'audio/audio3.mp3'
+];
+
+let currentAudioIndex = 0; // Индекс текущего аудиофайла
+const audio = new Audio(audioFiles[currentAudioIndex]); // Объект Audio
 
 function updateTimer() {
     const now = new Date(); // Текущее время
@@ -16,17 +26,26 @@ function updateTimer() {
     const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+    // const milliseconds = Math.floor((difference % 1000));
 
     // Форматируем вывод
-    document.getElementById('timer').textContent = 
+    document.getElementById('timer').textContent =
         `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
+// Кнопка для разрешения воспроизведения
+document.getElementById('playButton').addEventListener('click', () => {
+    audio.play().then(() => {
+        console.log("Воспроизведение разрешено!");
+        // Скрываем кнопку
+        document.getElementById('playButton').style.display = 'none';
+    }).catch(error => {
+        console.error("Ошибка воспроизведения аудио:", error);
+    });
+});
+
 // Запускаем таймер
-setInterval(updateTimer, 1000);
+setInterval(updateTimer, 0.00001);
 
 // Обновляем таймер сразу при загрузке страницы
 updateTimer();
-
-const audio = new Audio('notification.mp3');
-audio.play();
