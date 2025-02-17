@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,16 +21,62 @@
             height: auto;
         }
         #playButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-#playButton:hover {
-    background-color: #45a049;
-}
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #playButton:hover {
+            background-color: #45a049;
+        }
+        .achievements {
+            margin-top: 50px;
+        }
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            color: #c4c4c4;
+            text-align: left;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        .calendar {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .day {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .day.missed {
+            background-color: #ff4d4d;
+        }
+        .description {
+            margin-top: 20px;
+        }
+        .description textarea {
+            width: 100%;
+            height: 100px;
+            background-color: #2e2e2e;
+            color: #c4c4c4;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -41,22 +86,37 @@
     <img src="images/Malcev.jpg" alt="Malcev"> <br>
     <button id="playButton">Разрешить воспроизведение</button>
 
+    <!-- Раздел "ДОСТИЖЕНИЯ" -->
+    <div class="achievements">
+        <h2>ДОСТИЖЕНИЯ</h2>
+
+        <!-- Карточка: 100 задач Codewars -->
+        <div class="card" id="codewarsCard">
+            <h3>100 задач Codewars</h3>
+            <p>Решено задач: <span id="codewarsCount">0</span></p>
+            <button onclick="incrementCodewars()">Добавить задачу</button>
+        </div>
+
+        <!-- Карточка: 65 кг Мышц -->
+        <div class="card" id="muscleCard">
+            <h3>65 кг Мышц</h3>
+            <div class="calendar" id="calendar"></div>
+            <div class="description">
+                <textarea id="workoutDescription" placeholder="Опишите тренировку..."></textarea>
+            </div>
+        </div>
+
+        <!-- Карточка: Мой первый заказ -->
+        <div class="card" id="orderCard">
+            <h3>Мой первый заказ</h3>
+            <p>Дата: <span id="orderDate">Не указано</span></p>
+            <p>Описание: <span id="orderDescription">Не указано</span></p>
+            <p>Ссылка: <a id="orderLink" href="#" target="_blank">Не указано</a></p>
+            <button onclick="addOrderDetails()">Добавить детали заказа</button>
+        </div>
+    </div>
+
     <!-- Подключаем JavaScript -->
     <script src="script.js"></script>
 </body>
-=======
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой первый проект</title>
-</head>
-
-<body>
-    <h1 id="name"></h1>
-    <p id="sum"></p>
-    <script src="script.js"></script>
-</body>
-
->>>>>>> aa464fe5e5ddf0bb9ed0ef852a196aec3a6df02b
 </html>

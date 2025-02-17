@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // Целевая дата: 6 утра 10 февраля 2025 года по MSK
 const targetDate = new Date('2025-04-01T06:00:00+03:00');
 
@@ -50,25 +50,66 @@ setInterval(updateTimer, 0.00001);
 
 // Обновляем таймер сразу при загрузке страницы
 updateTimer();
-=======
-// console.log("Дима");
 
-// let sum = 0;
-// for (let i = 1; i <= 100; i++) {
-//     sum += i;
-// }
-// console.log("Сумма чисел от 1 до 100: " + sum);
+// Данные для карточек
+let codewarsCount = 0; // Счётчик задач Codewars
+let workoutData = {}; // Данные тренировок
+let orderDetails = { // Данные заказа
+    date: "Не указано",
+    description: "Не указано",
+    link: "#"
+};
 
-const nameElement = document.getElementById("name");
-nameElement.textContent = "Mace";
-
-let sum = 0;
-for (let i = 1; i <= 100; i++) {
-    sum += i;
+// Обновляем счётчик задач Codewars
+function incrementCodewars() {
+    codewarsCount++;
+    document.getElementById("codewarsCount").textContent = codewarsCount;
 }
 
-const sumElement = document.getElementById("sum")
-sumElement.textContent = "Сумма чисел от 1 до 100: " + sum;
+// Добавляем детали заказа
+function addOrderDetails() {
+    const date = prompt("Введите дату заказа:");
+    const description = prompt("Введите описание заказа:");
+    const link = prompt("Введите ссылку на заказ:");
 
-alert("Я не слабак");
->>>>>>> aa464fe5e5ddf0bb9ed0ef852a196aec3a6df02b
+    if (date && description && link) {
+        orderDetails.date = date;
+        orderDetails.description = description;
+        orderDetails.link = link;
+
+        document.getElementById("orderDate").textContent = orderDetails.date;
+        document.getElementById("orderDescription").textContent = orderDetails.description;
+        document.getElementById("orderLink").href = orderDetails.link;
+        document.getElementById("orderLink").textContent = "Перейти к заказу";
+    } else {
+        alert("Все поля должны быть заполнены!");
+    }
+}
+
+// Создаём календарь
+function createCalendar() {
+    const calendar = document.getElementById("calendar");
+    const days = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
+    days.forEach((day, index) => {
+        const dayElement = document.createElement("div");
+        dayElement.className = "day";
+        dayElement.textContent = day;
+        dayElement.addEventListener("click", () => showWorkoutDescription(index + 1));
+        calendar.appendChild(dayElement);
+    });
+}
+
+// Показываем описание тренировки
+function showWorkoutDescription(day) {
+    const description = prompt(`Опишите тренировку для дня ${day}:`);
+    if (description) {
+        workoutData[day] = description;
+        document.getElementById("workoutDescription").value = `День ${day}: ${description}`;
+    }
+}
+
+// Инициализация
+document.addEventListener("DOMContentLoaded", () => {
+    createCalendar();
+});
