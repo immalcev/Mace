@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Целевая дата: 6 утра 10 февраля 2025 года по MSK
 const targetDate = new Date('2025-04-01T06:00:00+03:00');
 
@@ -49,3 +50,25 @@ setInterval(updateTimer, 0.00001);
 
 // Обновляем таймер сразу при загрузке страницы
 updateTimer();
+=======
+// console.log("Дима");
+
+// let sum = 0;
+// for (let i = 1; i <= 100; i++) {
+//     sum += i;
+// }
+// console.log("Сумма чисел от 1 до 100: " + sum);
+
+const nameElement = document.getElementById("name");
+nameElement.textContent = "Mace";
+
+let sum = 0;
+for (let i = 1; i <= 100; i++) {
+    sum += i;
+}
+
+const sumElement = document.getElementById("sum")
+sumElement.textContent = "Сумма чисел от 1 до 100: " + sum;
+
+alert("Я не слабак");
+>>>>>>> aa464fe5e5ddf0bb9ed0ef852a196aec3a6df02b
